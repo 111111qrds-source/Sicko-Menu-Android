@@ -19,6 +19,12 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
+    - name: Configurar Ferramenta Gradle
+      uses: gradle/actions/setup-gradle@v4
+
+    - name: Gerar Arquivo Gradle Wrapper Que Faltava
+      run: gradle wrapper
+
     - name: Aceitar Licencas do Android SDK
       run: |
         yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
@@ -35,5 +41,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: mod-menu-apk
-      
         path: app/build/outputs/apk/debug/*.apk
