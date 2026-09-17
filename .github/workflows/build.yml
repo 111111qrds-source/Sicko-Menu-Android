@@ -19,11 +19,13 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Configurar Ferramenta Gradle
+    - name: Instalar Gradle 8.5 Compativel
       uses: gradle/actions/setup-gradle@v4
+      with:
+        gradle-version: '8.5'
 
-    - name: Gerar Arquivo Gradle Wrapper Que Faltava
-      run: gradle wrapper
+    - name: Gerar Gradle Wrapper na Versao 8.5
+      run: gradle wrapper --gradle-version 8.5
 
     - name: Aceitar Licencas do Android SDK
       run: |
